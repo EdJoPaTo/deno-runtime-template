@@ -1,4 +1,14 @@
-FROM docker.io/denoland/deno:1.29.1
+FROM docker.io/lukechannings/deno:latest AS deno
+
+FROM docker.io/library/debian:bullseye-slim
+
+COPY --from=deno /usr/bin/deno /usr/local/bin/
+RUN useradd --uid 1993 --user-group deno \
+	&& mkdir -p /deno-dir \
+	&& chown deno:deno /deno-dir
+ENV DENO_DIR /deno-dir/
+ENV DENO_INSTALL_ROOT /usr/local
+
 RUN apt-get update \
 	&& apt-get upgrade -y \
 	&& apt-get install -y --no-install-recommends bash \
@@ -12,4 +22,4 @@ RUN deno cache *.ts
 
 COPY . ./
 
-CMD deno run deno-runtime-template.ts
+CMD ["deno", "run", "deno-runtime-template.ts"]
