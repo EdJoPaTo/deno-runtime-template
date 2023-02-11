@@ -17,9 +17,7 @@ RUN apt-get update \
 
 WORKDIR /app
 
-COPY deno.jsonc *.ts ./
-RUN deno cache *.ts
-
 COPY . ./
+RUN deno cache *.ts
 
 CMD ["deno", "run", "deno-runtime-template.ts"]
