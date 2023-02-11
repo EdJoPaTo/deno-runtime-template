@@ -3,7 +3,7 @@
   "lock": false,
   "tasks": {},
   // https://deno.land/manual/advanced/typescript/configuration
-  // https://www.typescriptlang.org/tsconfig/#noErrorTruncation
+  // https://www.typescriptlang.org/tsconfig/
   "compilerOptions": {
     "importsNotUsedAsValues": "error",
     "noFallthroughCasesInSwitch": true,
