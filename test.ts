@@ -1,3 +1,3 @@
 Deno.test("dummy", () => {
-  console.log("dummy test");
+	console.log("dummy test");
 });
