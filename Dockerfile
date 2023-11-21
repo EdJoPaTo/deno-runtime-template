@@ -1,15 +1,11 @@
-FROM docker.io/lukechannings/deno:latest AS deno
+FROM docker.io/lukechannings/deno:latest AS builder
+WORKDIR /app
+COPY . ./
+RUN deno compile \
+	deno-runtime-template.ts
+
 
 FROM docker.io/library/debian:bookworm-slim
-
-COPY --from=deno /usr/bin/deno /usr/local/bin/
-RUN useradd --uid 1993 --user-group deno \
-	&& mkdir -p /deno-dir \
-	&& chown deno:deno /deno-dir \
-	&& deno --version
-ENV DENO_DIR /deno-dir/
-ENV DENO_INSTALL_ROOT /usr/local
-
 RUN apt-get update \
 	&& apt-get upgrade -y \
 	&& apt-get install -y --no-install-recommends bash \
@@ -18,7 +14,6 @@ RUN apt-get update \
 
 WORKDIR /app
 
-COPY . ./
-RUN deno cache *.ts
+COPY --from=builder /app/deno-runtime-template /usr/local/bin/
 
-CMD ["deno", "run", "deno-runtime-template.ts"]
+CMD ["deno-runtime-template"]
