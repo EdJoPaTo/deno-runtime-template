@@ -3,3 +3,4 @@
 **/*.test.*
 **/test.*
 Dockerfile
+node_modules

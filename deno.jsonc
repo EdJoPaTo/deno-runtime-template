@@ -1,7 +1,6 @@
 {
 	// https://deno.land/manual/getting_started/configuration_file
 	"lock": false,
-	"tasks": {},
 	// https://deno.land/manual/advanced/typescript/configuration
 	// https://www.typescriptlang.org/tsconfig/
 	"compilerOptions": {
@@ -11,6 +10,9 @@
 		"noUncheckedIndexedAccess": true,
 		"useUnknownInCatchVariables": true
 	},
+	"exclude": [
+		"./node_modules/"
+	],
 	"fmt": {
 		"useTabs": true
 	},
@@ -23,8 +25,13 @@
 				"eqeqeq",
 				"explicit-module-boundary-types",
 				"no-await-in-loop",
-				"no-eval"
+				"no-eval",
+				"no-non-null-asserted-optional-chain",
+				"no-non-null-assertion",
+				"no-sparse-arrays"
 			]
 		}
+	},
+	"tasks": {
 	}
 }
