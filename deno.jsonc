@@ -28,7 +28,9 @@
 				"no-eval",
 				"no-non-null-asserted-optional-chain",
 				"no-non-null-assertion",
-				"no-sparse-arrays"
+				"no-slow-types",
+				"no-sparse-arrays",
+				"verbatim-module-syntax"
 			]
 		}
 	},
