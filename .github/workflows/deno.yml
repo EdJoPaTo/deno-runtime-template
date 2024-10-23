@@ -2,7 +2,6 @@ name: Deno
 
 on:
   push:
-    branches-ignore: ["dependabot/**"]
   pull_request:
   workflow_dispatch:
 
