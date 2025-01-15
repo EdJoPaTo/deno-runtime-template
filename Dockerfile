@@ -8,7 +8,7 @@ RUN deno compile \
 	deno-runtime-template.ts
 
 
-FROM docker.io/library/debian:bookworm-slim
+FROM docker.io/library/debian:bookworm-slim AS final
 RUN apt-get update \
 	&& apt-get upgrade -y \
 	&& apt-get install -y --no-install-recommends bash \
@@ -18,5 +18,4 @@ RUN apt-get update \
 WORKDIR /app
 
 COPY --from=builder /app/deno-runtime-template /usr/local/bin/
-
 CMD ["deno-runtime-template"]
