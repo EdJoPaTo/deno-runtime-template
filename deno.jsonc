@@ -11,7 +11,7 @@
 	},
 	"exclude": [
 		"./coverage/",
-		"./docs",
+		"./docs/",
 		"./node_modules/"
 	],
 	"fmt": {
